@@ -57,7 +57,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 91%;
+  width: 96%;
   height: 60px;
   display: flex;
   align-items: center;
@@ -68,6 +68,7 @@
 }
 
 .logo {
+  margin-left: 1%;
   font-size: 2rem;
   font-weight: bold;
   font-family: 'SUD';
@@ -79,6 +80,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  
 }
 
 .navbar ul li {
