@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'SUD';
-  src: url(/public/fonts/Sud.otf) format('opentype');
+  src: url(/public/fonts/Sud.woff2) format('woff2');
 }
 
 .main {
@@ -56,13 +56,16 @@
       overflow: hidden;
       height: 95vh;
     }
+    .header{
+      width: 93%;
+    }
 }
 
 .header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 93%;
+  width: 95%;
   height: 60px;
   display: flex;
   align-items: center;
