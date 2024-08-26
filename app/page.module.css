@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'SUD';
-  src: url(/public/fonts/Sud.woff2) format('woff2');
+  font-family: 'k';
+  src: url('/fonts/Sud.woff2') format('woff2');
 }
 
 .main {
@@ -27,7 +27,7 @@
     white-space: nowrap;
     overflow: hidden;
     width: 100%;
-    font-family: 'SUD';
+    font-family: 'k';
     font-weight: bolder;
   
   }
@@ -79,7 +79,7 @@
   margin-left: 1%;
   font-size: 2rem;
   font-weight: bold;
-  font-family: 'SUD';
+  font-family: 'k';
   color: rgb(0, 0, 0);
 }
 
@@ -99,5 +99,5 @@
   text-decoration: none;
   color: rgb(0, 0, 0);
   font-size: 2rem;
-  font-family: 'SUD';
+  font-family: 'k';
 }
