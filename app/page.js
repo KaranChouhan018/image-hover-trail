@@ -15,7 +15,7 @@ export default function Index() {
   }, []);
 
   const manageMove = (x, y) => {
-    steps += 20; // Adjust for sensitivity
+    steps += 24; // Adjust for sensitivity
 
     if (steps >= currentIndex * 150) {
       moveImage(x, y);
