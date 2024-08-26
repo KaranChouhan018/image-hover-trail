@@ -98,7 +98,7 @@ export default function Index() {
       }
       <div className={styles.marquee}>
         <span className={styles.marqueeText}>
-          {Array(200).fill('404 Found').join('   ')} 
+          {Array(1000).fill('404 Found').join('   ')} 
         </span>
       </div>
     </div>
