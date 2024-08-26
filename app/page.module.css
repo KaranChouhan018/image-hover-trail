@@ -1,0 +1,39 @@
+.main {
+    display: flex;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.main img{
+    width: 15vw;
+    position: absolute;
+    display: none;
+    transform: translateX(-50%) translateY(-50%);;
+}
+.marquee {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    font-family: 'SUD';
+  }
+  
+  .marqueeText {
+    display: inline-block;
+    font-size: 2rem;
+    animation: marquee 70s linear infinite;
+    
+  }
+  
+  @keyframes marquee {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
