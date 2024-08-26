@@ -1,12 +1,13 @@
 .main {
     display: flex;
     height: 100vh;
+    width: 100%;
     position: relative;
     overflow: hidden;
 }
 
 .main img{
-    width: 15vw;
+    width: 18vw;
     position: absolute;
     display: none;
     transform: translateX(-50%) translateY(-50%);;
@@ -20,6 +21,7 @@
     overflow: hidden;
     width: 100%;
     font-family: 'SUD';
+  
   }
   
   .marqueeText {

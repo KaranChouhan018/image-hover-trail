@@ -7,7 +7,7 @@ export default function Index() {
   let steps = 0;
   let currentIndex = 0;
   let nbOfImages = 0;
-  let maxNumberOfImages = 8;
+  let maxNumberOfImages = 7;
   let refs = [];
 
   const manageMouseMove = (e) => {
