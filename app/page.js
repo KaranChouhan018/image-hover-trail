@@ -1,75 +1,99 @@
-'use client'
-import styles from './page.module.css'
-import { useRef } from 'react';
+'use client';
+import styles from './page.module.css';
+import { useRef, useEffect } from 'react';
 
 export default function Index() {
 
-  let steps = 0;
-  let currentIndex = 0;
-  let nbOfImages = 0;
-  let maxNumberOfImages = 7;
-  let refs = [];
+  let steps = useRef(0).current;
+  let currentIndex = useRef(0).current;
+  let nbOfImages = useRef(0).current;
+  const maxNumberOfImages = 7;
+  const refs = useRef([]);
 
-  const manageMouseMove = (e) => {
-    const { clientX, clientY, movementX, movementY } = e;
+  useEffect(() => {
+    refs.current = refs.current.slice(0, 19); // Ensure refs array length matches the number of images
+  }, []);
 
-    steps+= Math.abs(movementX) + Math.abs(movementY);
+  const manageMove = (x, y) => {
+    steps += 20; // Adjust for sensitivity
 
-    if(steps >= currentIndex * 150){
-      moveImage(clientX, clientY);
+    if (steps >= currentIndex * 150) {
+      moveImage(x, y);
 
-      if(nbOfImages == maxNumberOfImages){
+      if (nbOfImages === maxNumberOfImages) {
         removeImage();
       }
     }
-    
-    if(currentIndex == refs.length){
+
+    if (currentIndex === refs.current.length) {
       currentIndex = 0;
       steps = -150;
     }
-  }
+  };
 
   const moveImage = (x, y) => {
-    const currentImage = refs[currentIndex].current;
-    currentImage.style.left = x + "px";
-    currentImage.style.top = y + "px";
-    currentImage.style.display = "block";
-    currentIndex++;
-    nbOfImages++;
-    setZIndex()
-  }
+    const currentImage = refs.current[currentIndex];
+    if (currentImage) {
+      currentImage.style.left = `${x}px`;
+      currentImage.style.top = `${y}px`;
+      currentImage.style.display = 'block';
+      currentIndex++;
+      nbOfImages++;
+      setZIndex();
+    }
+  };
 
   const setZIndex = () => {
     const images = getCurrentImages();
-    for(let i = 0 ; i < images.length ; i++){
+    for (let i = 0; i < images.length; i++) {
       images[i].style.zIndex = i;
     }
-  }
+  };
 
   const removeImage = () => {
     const images = getCurrentImages();
-    images[0].style.display = "none";
+    images[0].style.display = 'none';
     nbOfImages--;
-  }
+  };
 
   const getCurrentImages = () => {
-    let images = []
+    let images = [];
     let indexOfFirst = currentIndex - nbOfImages;
-    for(let i = indexOfFirst ; i < currentIndex ; i++){
+    for (let i = indexOfFirst; i < currentIndex; i++) {
       let targetIndex = i;
-      if(targetIndex < 0) targetIndex += refs.length
-      images.push(refs[targetIndex].current);
+      if (targetIndex < 0) targetIndex += refs.current.length;
+      images.push(refs.current[targetIndex]);
     }
     return images;
-  }
+  };
+
+  const handleMouseMove = (e) => {
+    const { clientX, clientY } = e;
+    manageMove(clientX, clientY);
+  };
+
+  const handleTouchMove = (e) => {
+    const touch = e.touches[0];
+    const { clientX, clientY } = touch;
+    manageMove(clientX, clientY);
+  };
 
   return (
-    <div onMouseMove={(e) => {manageMouseMove(e)}} className={styles.main}>
+    <div 
+      onMouseMove={handleMouseMove} 
+      onTouchMove={handleTouchMove} 
+      className={styles.main}
+    >
       {
-        [...Array(19).keys()].map( (_, index) => {
-          const ref = useRef(null);
-          refs.push(ref)
-          return <img onClick={() => {console.log(refs)}} ref={ref} src={`/images/${index}.jpg`}></img>
+        [...Array(19).keys()].map((_, index) => {
+          return (
+            <img 
+              key={index} 
+              ref={el => refs.current[index] = el} 
+              src={`/images/${index}.jpg`} 
+              className={styles.image} 
+            />
+          );
         })
       }
       <div className={styles.marquee}>
@@ -78,5 +102,5 @@ export default function Index() {
         </span>
       </div>
     </div>
-  )
+  );
 }
