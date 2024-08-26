@@ -12,6 +12,7 @@
     position: absolute;
     display: none;
     transform: translateX(-50%) translateY(-50%);;
+    transition: left 0.1s ease-out, top 0.1s ease-out; /* Smooth movement */
 }
 .marquee {
     position: absolute;
@@ -22,12 +23,13 @@
     overflow: hidden;
     width: 100%;
     font-family: 'SUD';
+    font-weight: bolder;
   
   }
   
   .marqueeText {
     display: inline-block;
-    font-size: 4rem;
+    font-size: 8rem;
     color: black;
     animation: marquee 600s linear infinite;
     
@@ -49,4 +51,43 @@
       overflow: hidden;
       height: 95vh;
     }
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 91%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'SUD';
+  color: rgb(0, 0, 0);
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar ul li {
+  margin-left: 20px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-size: 2rem;
+  font-family: 'SUD';
 }
