@@ -57,7 +57,7 @@
       height: 95vh;
     }
     .header{
-      width: 91%;
+      width: 86%;
     }
 }
 
@@ -65,7 +65,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 95%;
+  width: 92%;
   height: 60px;
   display: flex;
   align-items: center;
