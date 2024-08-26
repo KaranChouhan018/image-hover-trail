@@ -41,3 +41,12 @@
       transform: translateX(-100%);
     }
   }
+  @media (max-width: 575px) {
+    .main img {
+        width: 30vw; /* Even larger on extra small devices */
+    }
+    .main{
+      overflow: hidden;
+      height: 95vh;
+    }
+}
